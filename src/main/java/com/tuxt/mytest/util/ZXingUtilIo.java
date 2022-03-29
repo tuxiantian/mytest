@@ -10,8 +10,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import com.ai.frame.logger.Logger;
-import com.ai.frame.logger.LoggerFactory;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
@@ -47,8 +45,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
  * @see   ----------------------------------------------------------------------------------------------------------------------- 
  */ 
 public class ZXingUtilIo {  
-	private static final Logger logger = LoggerFactory.getUtilLog(ZXingUtilIo.class);
-    private ZXingUtilIo(){}  
+    private ZXingUtilIo(){}
        
     /** 
      * 为二维码图片增加logo头像 
@@ -94,8 +91,7 @@ public class ZXingUtilIo {
         } catch (Exception e) {  
             System.out.println("编码待生成二维码图片的文本时发生异常,堆栈轨迹如下");  
             e.printStackTrace();  
-            logger.error("!!!!!!!!!!!!!!!", "", e);
-            return null;  
+            return null;
         }  
         //生成的二维码图片默认背景为白色,前景为黑色,但是在加入logo图像后会导致logo也变为黑白色,至于是什么原因还没有仔细去读它的源码  
         //所以这里对其第一个参数黑色将ZXing默认的前景色0xFF000000稍微改了一下0xFF000001,最终效果也是白色背景黑色前景的二维码,且logo颜色保持原有不变  
@@ -116,8 +112,7 @@ public class ZXingUtilIo {
             } catch (IOException e) {  
                 System.out.println("为二维码图片[ ]添加logo头像[" + logoPath + "]时遇到异常,堆栈轨迹如下");  
                 e.printStackTrace();  
-                logger.error("!!!!!!!!!!!!!!!", "", e);
-            }  
+            }
             return image;  
         }  
     }  
@@ -150,8 +145,7 @@ public class ZXingUtilIo {
         } catch (Exception e) {  
             System.out.println("编码待生成二维码图片的文本时发生异常,堆栈轨迹如下");  
             e.printStackTrace();  
-            logger.error("!!!!!!!!!!!!!!!", "", e);
-        }  
+        }
         MatrixToImageConfig config = new MatrixToImageConfig(0xFF000001, 0xFFFFFFFF);  
         final String FORMAT="PNG";
         MatrixToImageWriter.writeToStream(bitMatrix, FORMAT, stream, config);
@@ -186,8 +180,7 @@ public class ZXingUtilIo {
         } catch (NotFoundException e) {  
             System.out.println("二维码图片[" + imagePath + "]解析失败,堆栈轨迹如下");  
             e.printStackTrace();  
-            logger.error("!!!!!!!!!!", "!!!!!!!!!!!!!!",e);
-            return "";  
+            return "";
         }  
     }  
 }

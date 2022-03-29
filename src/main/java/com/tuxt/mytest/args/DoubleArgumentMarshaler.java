@@ -1,9 +1,11 @@
 package com.tuxt.mytest.args;
 
-import static test.args.ErrorCode.*;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import static com.tuxt.mytest.args.ErrorCode.INVALID_DOUBLE;
+import static com.tuxt.mytest.args.ErrorCode.MISSING_DOUBLE;
 
 public class DoubleArgumentMarshaler implements ArgumentMarshaler{
 

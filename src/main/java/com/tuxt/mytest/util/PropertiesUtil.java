@@ -3,8 +3,6 @@ package com.tuxt.mytest.util;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import com.ai.frame.logger.Logger;
-import com.ai.frame.logger.LoggerFactory;
 
 /**
  * Parsing The Configuration File
@@ -13,7 +11,6 @@ import com.ai.frame.logger.LoggerFactory;
  * @since 2015-01-05
  */
 public final class PropertiesUtil {
-	private static final Logger logger = LoggerFactory.getUtilLog(PropertiesUtil.class);
 	private static final String BUNDLE_NAME = "config/system";
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
@@ -37,7 +34,6 @@ public final class PropertiesUtil {
 		try {
 			return RESOURCE_BUNDLE.getString(key);
 		} catch (MissingResourceException e) {
-			logger.error("PropertiesUtil#getString",key+" not found in system.properties", e);
 			return defaultValue;
 		}
 	}
@@ -45,7 +41,6 @@ public final class PropertiesUtil {
 		try {
 			return Integer.parseInt(RESOURCE_BUNDLE.getString(key));
 		} catch (MissingResourceException e) {
-			logger.error("PropertiesUtil#getInt",key+" not found in system.properties", e);
 			return defaultValue;
 		}
 	}
@@ -53,7 +48,6 @@ public final class PropertiesUtil {
 		try {
 			return Boolean.parseBoolean(RESOURCE_BUNDLE.getString(key));
 		} catch (MissingResourceException e) {
-			logger.error("PropertiesUtil#getBoolean",key+" not found in system.properties", e);
 			return defaultValue;
 		}
 	}

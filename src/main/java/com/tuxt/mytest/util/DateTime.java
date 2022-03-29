@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.ParseException;
-import org.apache.log4j.Logger;
 import java.util.GregorianCalendar;
 
 
@@ -20,7 +19,6 @@ import java.util.GregorianCalendar;
  * @version 1.0
  */
 public class DateTime {
-    private static final transient Logger log = Logger.getLogger(DateTime.class);
     /**
      * 得到当前日期，格式yyyy-MM-dd。
      * FrameWork使用
@@ -125,7 +123,6 @@ public class DateTime {
                       ".000000000";
             return Timestamp.valueOf(strDate);
         } catch (Exception ex) {
-            log.error(ex.getMessage());
             return getCurrentDate();
         }
     }
@@ -137,7 +134,6 @@ public class DateTime {
             strDate = getFormattedDate(strDate, "yyyy-MM-dd HH:mm:ss");
             return Timestamp.valueOf(strDate);
         } catch (Exception ex) {
-            log.error(ex.getMessage());
             return getCurrentDate();
         }
     }
@@ -181,7 +177,6 @@ public class DateTime {
                 return formatter.format(dtDate);
             }
         } catch (Exception e) {
-            log.error("转换日期字符串格式时出错;" + e.getMessage());
             return "";
         }
     }

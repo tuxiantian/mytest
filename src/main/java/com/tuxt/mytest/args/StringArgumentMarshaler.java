@@ -2,7 +2,9 @@ package com.tuxt.mytest.args;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import static test.args.ErrorCode.*; 
+
+import static com.tuxt.mytest.args.ErrorCode.MISSING_STRING;
+
 public class StringArgumentMarshaler implements ArgumentMarshaler {
 
 	private String stringValue="";

@@ -1,6 +1,7 @@
 package com.tuxt.mytest.args;
 
-import static test.args.ErrorCode.*;
+import static com.tuxt.mytest.args.ErrorCode.OK;
+
 public class ArgsException extends Exception{
 
 	private char errorArgumentId='\0';

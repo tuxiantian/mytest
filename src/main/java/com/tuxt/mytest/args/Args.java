@@ -8,7 +8,8 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import static test.args.ErrorCode.*;
+import static com.tuxt.mytest.args.ErrorCode.*;
+
 
 /**
  * 命令行参数解析工具类

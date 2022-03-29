@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -150,20 +148,20 @@ public class WorkHourCaculate {
 		double sum=0;
 		//输入姓名
 		String personName=getPersonName(tempPath);
-		newRow.createCell(0,Cell.CELL_TYPE_STRING).setCellValue(personName);
+		newRow.createCell(0, CellType.STRING).setCellValue(personName);
 		//拷贝工时
 		for (int i = monday; i <= sunday; i++) {
 			double temp=tempSheet.getRow(row).getCell(i).getNumericCellValue();
 			sum+=temp;
-			newRow.createCell(i-1,Cell.CELL_TYPE_NUMERIC).setCellValue(temp);
+			newRow.createCell(i-1,CellType.NUMERIC).setCellValue(temp);
 		}
 		//输入总计工时
 		int sumColumn=10;
-		newRow.createCell(sumColumn,Cell.CELL_TYPE_NUMERIC).setCellValue(sum);
+		newRow.createCell(sumColumn,CellType.NUMERIC).setCellValue(sum);
 		//输入工作内容和备注
 		int start=9,end=10;
 		for (int i = start; i <=end; i++) {
-			newRow.createCell(i-1,Cell.CELL_TYPE_STRING).setCellValue(tempSheet.getRow(row).getCell(i).getStringCellValue());
+			newRow.createCell(i-1,CellType.STRING).setCellValue(tempSheet.getRow(row).getCell(i).getStringCellValue());
 		}
 	}
 	public static XSSFWorkbook createExcleHead() {
@@ -173,8 +171,8 @@ public class WorkHourCaculate {
 		XSSFCell firstCell = firstrRow.createCell(0);
 		//设置文本水平和垂直方向居中
 		XSSFCellStyle style = xwb.createCellStyle();
-		style.setAlignment(CellStyle.ALIGN_CENTER);
-		style.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+		style.setAlignment(HorizontalAlignment.CENTER);
+		style.setVerticalAlignment(VerticalAlignment.CENTER);
 		style.setWrapText(true);
 		//首行 合并单元格
 		int columnCount=10;
@@ -182,7 +180,7 @@ public class WorkHourCaculate {
 		
 		//设置字体加粗
 		Font sheetFont = xwb.createFont();
-		sheetFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
+		sheetFont.setBold(true);
 		style.setFont(sheetFont);
 		String[] start2end=getExcleHeadDate();
 		

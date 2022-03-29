@@ -2,7 +2,10 @@ package com.tuxt.mytest.args;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import static test.args.ErrorCode.*;
+
+import static com.tuxt.mytest.args.ErrorCode.INVALID_INTEGER;
+import static com.tuxt.mytest.args.ErrorCode.MISSING_INTEGER;
+
 public class InterArgumentMarshaler implements ArgumentMarshaler {
 
 	private int intValue;
