@@ -24,7 +24,6 @@ public class Hongbao {
         BigDecimal lowAmount=totalAmount.multiply(BigDecimal.valueOf(0.01));
         BigDecimal balanceAmount=totalAmount;
         for (int i = totalNumber; i >= 2; i--) {
-            BigDecimal x = totalAmount.multiply(new BigDecimal(2)).divide(BigDecimal.valueOf(i),2,BigDecimal.ROUND_HALF_UP);
             BigDecimal random = getRandom(totalAmount,highAmount,lowAmount);
             list.add(random);
             balanceAmount =balanceAmount.subtract(random);
