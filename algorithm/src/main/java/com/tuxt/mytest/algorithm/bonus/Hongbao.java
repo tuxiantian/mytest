@@ -35,7 +35,7 @@ public class Hongbao {
 
     public static void main(String[] args) {
         Hongbao hongbao = new Hongbao();
-        for (BigDecimal integer : hongbao.split(BigDecimal.valueOf(200), 10)) {
+        for (BigDecimal integer : hongbao.split(BigDecimal.valueOf(100), 10)) {
             System.out.print(integer);
             System.out.println(" ");
         }
