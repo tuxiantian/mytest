@@ -22,19 +22,18 @@ public class Hongbao {
         }
         BigDecimal highAmount=totalAmount.multiply(BigDecimal.valueOf(0.9));
         BigDecimal lowAmount=totalAmount.multiply(BigDecimal.valueOf(0.01));
-        BigDecimal balanceAmount=totalAmount;
         for (int i = totalNumber; i >= 2; i--) {
-            BigDecimal random = getRandom(totalAmount,highAmount,lowAmount);
+            BigDecimal random = getRandom(totalAmount.divide(BigDecimal.valueOf(totalNumber)).multiply(BigDecimal.valueOf(2)),highAmount,lowAmount);
             list.add(random);
-            balanceAmount =balanceAmount.subtract(random);
+            totalAmount =totalAmount.subtract(random);
         }
         list.add(totalAmount);
         return list;
     }
 
     private BigDecimal getRandom(BigDecimal x,BigDecimal highAmount,BigDecimal lowAmount){
-        BigDecimal random = BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble(1.0, x.doubleValue())).setScale(2,BigDecimal.ROUND_HALF_UP);
-        if (random.doubleValue()<lowAmount.doubleValue()||random.doubleValue()>highAmount.doubleValue()){
+        BigDecimal random = BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble(lowAmount.doubleValue(), x.doubleValue())).setScale(2,BigDecimal.ROUND_HALF_UP);
+        if (random.doubleValue()>highAmount.doubleValue()){
             return getRandom(x, highAmount, lowAmount);
         }else {
             return random;
@@ -43,7 +42,9 @@ public class Hongbao {
 
     public static void main(String[] args) {
         Hongbao hongbao = new Hongbao();
-        for (BigDecimal integer : hongbao.split(BigDecimal.valueOf(100), 10)) {
+        List<BigDecimal> list = hongbao.split(BigDecimal.valueOf(100), 20);
+
+        for (BigDecimal integer : list) {
             System.out.print(integer);
             System.out.println(" ");
         }
