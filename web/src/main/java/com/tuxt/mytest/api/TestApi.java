@@ -27,6 +27,12 @@ public class TestApi {
         return String.valueOf(value);
     }
 
+    /**
+     * 测试true http://localhost/api/test/checkUser?userId=123
+     * 测试false http://localhost/api/test/checkUser?userId=12
+     * @param userId
+     * @return
+     */
     @GetMapping("/checkUser")
     public boolean checkUser(Long userId){
         return authService.checkUserInWhiteList(userId);
